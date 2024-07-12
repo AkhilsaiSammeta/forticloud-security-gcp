@@ -1,0 +1,23 @@
+
+
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: forticloud-app
+  labels:
+    app: forticloud
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: forticloud
+  template:
+    metadata:
+      labels:
+        app: forticloud
+    spec:
+      containers:
+      - name: forticloud-container
+        image: gcr.io/your-gcp-project/forticloud-app:latest
+        ports:
+        - containerPort: 8080
